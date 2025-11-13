@@ -10,6 +10,7 @@ import { Spinner } from "@/components/ui/spinner"
 import { JobDetailHeader } from "@/components/jobs/job-detail-header"
 import { JobDetailContent } from "@/components/jobs/job-detail-content"
 import { SimilarJobs } from "@/components/jobs/similar-jobs"
+import { useAuth } from "@/lib/auth-context"
 import styles from "./job-detail.module.css"
 
 export default function JobDetailPage() {
@@ -20,12 +21,15 @@ export default function JobDetailPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState("")
   const [isSaved, setIsSaved] = useState(false)
+  const { isAuthenticated } = useAuth()
   const api = ApiClient.getInstance()
 
   useEffect(() => {
     fetchJobDetails()
-    checkIfJobIsSaved()
-  }, [jobId])
+    if (isAuthenticated) {
+      checkIfJobIsSaved()
+    }
+  }, [jobId, isAuthenticated])
 
   const checkIfJobIsSaved = async () => {
     try {
@@ -55,10 +59,20 @@ export default function JobDetailPage() {
   }
 
   const handleApply = () => {
-    router.push(`/jobs/${jobId}/apply`)
+    if (!isAuthenticated) {
+      alert("Please log in to apply for this job.")
+      router.push("/auth/login")
+    } else {
+      router.push(`/jobs/${jobId}/apply`)
+    }
   }
 
   const handleSaveJob = async () => {
+    if (!isAuthenticated) {
+      alert("Please log in to save this job.")
+      router.push("/auth/login")
+      return
+    }
     try {
       if (isSaved) {
         await api.delete(`/saved-vacancies/${jobId}`)

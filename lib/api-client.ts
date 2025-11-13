@@ -61,9 +61,9 @@ export class ApiClient {
         if (response.status === 401) {
             this.clearTokens()
             // Redirect to login page
-            if (typeof window !== "undefined") {
-                window.location.href = "/auth/login"
-            }
+            // if (typeof window !== "undefined") {
+            //     window.location.href = "/auth/login"
+            // }
             throw new Error("Unauthorized: Session expired or invalid token.")
         }
 
