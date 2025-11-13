@@ -1,0 +1,200 @@
+.container {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.header {
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.backLink {
+  color: #2196f3;
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #757575;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.searchContainer {
+  max-width: 600px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  border-color: #2196f3;
+}
+
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.loading,
+.error,
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #757575;
+}
+
+.error {
+  color: #f44336;
+}
+
+.companiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.companyCard {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.companyCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: #2196f3;
+}
+
+.companyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.companyLogo {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  background: #e3f2fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.companyLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.companyLogo span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2196f3;
+}
+
+.verifiedBadge {
+  background: #4caf50;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.companyName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 0.75rem;
+}
+
+.companyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.infoItem {
+  color: #757575;
+  font-size: 0.875rem;
+}
+
+.companyDesc {
+  color: #424242;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.companyRating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stars {
+  color: #ffc107;
+}
+
+.ratingText {
+  color: #757575;
+  font-size: 0.875rem;
+}
+
+.companyFooter {
+  padding-top: 1rem;
+  border-top: 1px solid #f5f5f5;
+}
+
+.viewProfile {
+  color: #2196f3;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .companiesGrid {
+    grid-template-columns: 1fr;
+  }
+}

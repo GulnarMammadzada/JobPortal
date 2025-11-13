@@ -1,0 +1,34 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.default {
+  background-color: #2196f3;
+  color: white;
+}
+
+.secondary {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+.success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.warning {
+  background-color: #ff9800;
+  color: white;
+}
+
+.danger {
+  background-color: #f44336;
+  color: white;
+}

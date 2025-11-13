@@ -1,65 +1,226 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/lib/auth-context"
+import { ApiClient } from "@/lib/api-client"
+import type { VacancyDto } from "@/lib/types"
+import Link from "next/link"
+import styles from "./page.module.css"
+
+export default function LandingPage() {
+  const router = useRouter()
+  const { isAuthenticated, user } = useAuth()
+  const [featuredJobs, setFeaturedJobs] = useState<VacancyDto[]>([])
+  const [searchKeyword, setSearchKeyword] = useState("")
+  const [searchLocation, setSearchLocation] = useState("")
+  const api = ApiClient.getInstance()
+
+  useEffect(() => {
+    fetchFeaturedJobs()
+  }, [])
+
+  const fetchFeaturedJobs = async () => {
+    try {
+      const response = await api.get<any>("/vacancies?page=0&size=6")
+      setFeaturedJobs(response.content || [])
+    } catch (error) {
+      console.error("Failed to fetch featured jobs:", error)
+    }
+  }
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const params = new URLSearchParams()
+    if (searchKeyword) params.append("keyword", searchKeyword)
+    if (searchLocation) params.append("city", searchLocation)
+    router.push(`/jobs?${params.toString()}`)
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className={styles.container}>
+      {/* Navigation */}
+      <nav className={styles.nav}>
+        <div className={styles.navContent}>
+          <Link href="/" className={styles.logo}>
+            JobPortal
+          </Link>
+          <div className={styles.navLinks}>
+            <Link href="/jobs" className={styles.navLink}>Browse Jobs</Link>
+            <Link href="/companies" className={styles.navLink}>Companies</Link>
+            <Link href="/auth/login" className={styles.navLinkBtn}>Login</Link>
+            <Link href="/auth/register" className={styles.navLinkBtnPrimary}>Sign Up</Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Find Your Dream Job with AI</h1>
+          <p className={styles.heroSubtitle}>
+            Smart matching, personalized recommendations, and AI-powered career assistance
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+          {/* Search Bar */}
+          <form onSubmit={handleSearch} className={styles.searchForm}>
+            <input
+              type="text"
+              placeholder="Job title, keywords..."
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              className={styles.searchInput}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <select
+              value={searchLocation}
+              onChange={(e) => setSearchLocation(e.target.value)}
+              className={styles.searchSelect}
+            >
+              <option value="">All Locations</option>
+              <option value="Baku">Baku</option>
+              <option value="Ganja">Ganja</option>
+              <option value="Sumqayit">Sumqayit</option>
+              <option value="Mingachevir">Mingachevir</option>
+            </select>
+            <button type="submit" className={styles.searchBtn}>
+              Search Jobs
+            </button>
+          </form>
+
+          <div className={styles.heroActions}>
+            <Link href="/jobs" className={styles.btnPrimary}>Find Jobs</Link>
+            <Link href="/auth/register" className={styles.btnSecondary}>Post a Job</Link>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Key Features */}
+      <section className={styles.features}>
+        <h2 className={styles.sectionTitle}>Why Choose Us</h2>
+        <div className={styles.featuresGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🤖</div>
+            <h3 className={styles.featureTitle}>AI-Powered Matching</h3>
+            <p className={styles.featureDesc}>
+              Smart algorithms match you with the best opportunities based on your skills and experience
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>📊</div>
+            <h3 className={styles.featureTitle}>CV Analysis</h3>
+            <p className={styles.featureDesc}>
+              Get professional AI feedback on your resume to improve your chances of getting hired
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>💬</div>
+            <h3 className={styles.featureTitle}>Chatbot Assistant</h3>
+            <p className={styles.featureDesc}>
+              24/7 AI assistant to help you with your job search and answer your questions
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>⭐</div>
+            <h3 className={styles.featureTitle}>Company Reviews</h3>
+            <p className={styles.featureDesc}>
+              Read authentic reviews from employees to make informed career decisions
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Jobs */}
+      {featuredJobs.length > 0 && (
+        <section className={styles.featuredJobs}>
+          <h2 className={styles.sectionTitle}>Featured Opportunities</h2>
+          <div className={styles.jobsGrid}>
+            {featuredJobs.map((job) => (
+              <Link href={`/jobs/${job.id}`} key={job.id} className={styles.jobCard}>
+                <div className={styles.jobHeader}>
+                  <h3 className={styles.jobTitle}>{job.title}</h3>
+                  {job.isRemote && <span className={styles.remoteBadge}>Remote</span>}
+                </div>
+                <p className={styles.jobCompany}>{job.company?.companyName}</p>
+                <div className={styles.jobDetails}>
+                  <span className={styles.jobDetail}>📍 {job.city}</span>
+                  <span className={styles.jobDetail}>
+                    💰 {job.salaryMin}-{job.salaryMax} {job.salaryCurrency}
+                  </span>
+                  <span className={styles.jobDetail}>💼 {job.employmentType.replace("_", " ")}</span>
+                </div>
+                <div className={styles.jobSkills}>
+                  {job.skills.slice(0, 3).map((skill, idx) => (
+                    <span key={idx} className={styles.skillTag}>{skill}</span>
+                  ))}
+                  {job.skills.length > 3 && (
+                    <span className={styles.skillTag}>+{job.skills.length - 3} more</span>
+                  )}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className={styles.viewAllContainer}>
+            <Link href="/jobs" className={styles.btnSecondary}>View All Jobs</Link>
+          </div>
+        </section>
+      )}
+
+      {/* How It Works */}
+      <section className={styles.howItWorks}>
+        <h2 className={styles.sectionTitle}>How It Works</h2>
+        <div className={styles.stepsGrid}>
+          <div className={styles.step}>
+            <div className={styles.stepNumber}>1</div>
+            <h3 className={styles.stepTitle}>Create Profile</h3>
+            <p className={styles.stepDesc}>
+              Sign up and build your professional profile with your skills and experience
+            </p>
+          </div>
+          <div className={styles.step}>
+            <div className={styles.stepNumber}>2</div>
+            .
+            <h3 className={styles.stepTitle}>Apply to Jobs</h3>
+            <p className={styles.stepDesc}>
+              Browse AI-recommended jobs and apply with one click
+            </p>
+          </div>
+          <div className={styles.step}>
+            <div className={styles.stepNumber}>3</div>
+            <h3 className={styles.stepTitle}>Get Hired</h3>
+            <p className={styles.stepDesc}>
+              Track your applications and land your dream job
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <div className={styles.footerSection}>
+            <h4 className={styles.footerTitle}>JobPortal</h4>
+            <p className={styles.footerText}>Find your dream job with AI-powered matching</p>
+          </div>
+          <div className={styles.footerSection}>
+            <h4 className={styles.footerTitle}>For Job Seekers</h4>
+            <Link href="/jobs" className={styles.footerLink}>Browse Jobs</Link>
+            <Link href="/auth/register" className={styles.footerLink}>Create Profile</Link>
+          </div>
+          <div className={styles.footerSection}>
+            <h4 className={styles.footerTitle}>For Employers</h4>
+            <Link href="/auth/register" className={styles.footerLink}>Post a Job</Link>
+            <Link href="/auth/login" className={styles.footerLink}>Sign In</Link>
+          </div>
+          <div className={styles.footerSection}>
+            <h4 className={styles.footerTitle}>Company</h4>
+            <Link href="/about" className={styles.footerLink}>About Us</Link>
+            <Link href="/contact" className={styles.footerLink}>Contact</Link>
+          </div>
+        </div>
+        <div className={styles.footerBottom}>
+          <p>&copy; 2025 JobPortal. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
-  );
+  )
 }

@@ -1,0 +1,272 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1rem;
+}
+
+.error {
+  color: #991b1b;
+  background-color: #fee2e2;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #fca5a5;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  margin-bottom: 2rem;
+}
+
+.backButton:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.jobTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.infoSection {
+  margin-bottom: 2rem;
+}
+
+.infoSection:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.value {
+  font-size: 0.9375rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.matchScore {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.coverLetter {
+  color: #6b7280;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.feedbackSection {
+  background-color: #f0fdf4;
+  border-left: 4px solid #10b981;
+  padding: 1rem;
+  border-radius: 0.375rem;
+}
+
+.feedback {
+  color: #15803d;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.timelineItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.timelineDot {
+  width: 12px;
+  height: 12px;
+  background-color: #2563eb;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.timelineContent {
+  flex: 1;
+}
+
+.timelineStatus {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.timelineDate {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0.25rem 0 0;
+}
+
+.timelineBy {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin: 0.25rem 0 0;
+}
+
+.noTimeline {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin: 0;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.actionButton {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  background-color: #2563eb;
+  color: white;
+}
+
+.actionLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+}
+
+.actionLink:hover {
+  border-color: #2563eb;
+  background-color: #f0f9ff;
+}
+
+ @media (max-width: 768px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+  }
+
+  .jobTitle {
+    font-size: 1.25rem;
+  }
+}

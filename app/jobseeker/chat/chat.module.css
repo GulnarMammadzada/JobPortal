@@ -1,0 +1,299 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f5f7fa;
+}
+
+.header {
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.headerContent {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.backLink {
+  color: #2196f3;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #212121;
+}
+
+.subtitle {
+  color: #757575;
+  font-size: 0.875rem;
+}
+
+.chatArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  background: white;
+  overflow: hidden;
+}
+
+.messagesContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.messageWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.assistantMessage,
+.userMessage {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.userMessage {
+  flex-direction: row-reverse;
+}
+
+.messageAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2196f3;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.assistantMessage .messageAvatar {
+  background: #4caf50;
+  font-size: 1.25rem;
+}
+
+.messageContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 70%;
+}
+
+.messageBubble {
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  line-height: 1.6;
+}
+
+.assistantMessage .messageBubble {
+  background: #f5f7fa;
+  color: #212121;
+  border-bottom-left-radius: 4px;
+}
+
+.userMessage .messageBubble {
+  background: #2196f3;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.messageTime {
+  font-size: 0.75rem;
+  color: #9e9e9e;
+  padding: 0 0.5rem;
+}
+
+.userMessage .messageTime {
+  text-align: right;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.suggestionChip {
+  background: white;
+  color: #2196f3;
+  border: 1px solid #2196f3;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.suggestionChip:hover {
+  background: #2196f3;
+  color: white;
+}
+
+.relatedJobs {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.relatedJobsTitle {
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.jobLink {
+  display: block;
+  color: #2196f3;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+  font-size: 0.875rem;
+}
+
+.jobLink:hover {
+  background: #f5f7fa;
+}
+
+.typingIndicator {
+  background: #f5f7fa;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border-bottom-left-radius: 4px;
+  display: flex;
+  gap: 0.375rem;
+}
+
+.typingIndicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9e9e9e;
+  animation: typing 1.4s infinite;
+}
+
+.typingIndicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingIndicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+.inputArea {
+  border-top: 1px solid #e0e0e0;
+  padding: 1.5rem 2rem;
+  background: white;
+}
+
+.inputContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 24px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #2196f3;
+}
+
+.input:disabled {
+  background: #f5f7fa;
+  cursor: not-allowed;
+}
+
+.sendBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #2196f3;
+  color: white;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sendBtn:hover:not(:disabled) {
+  background: #1976d2;
+  transform: scale(1.05);
+}
+
+.sendBtn:disabled {
+  background: #90caf9;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .messagesContainer {
+    padding: 1rem;
+  }
+
+  .messageContent {
+    max-width: 85%;
+  }
+
+  .inputArea {
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+}

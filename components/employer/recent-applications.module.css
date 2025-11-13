@@ -1,0 +1,50 @@
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.noData {
+  text-align: center;
+  color: #9ca3af;
+  padding: 2rem;
+}
+
+.applicationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.applicationItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.applicantInfo {
+  flex: 1;
+}
+
+.name {
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.position {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.matchScore {
+  font-size: 0.875rem;
+  color: #2563eb;
+  font-weight: 600;
+}

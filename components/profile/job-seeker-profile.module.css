@@ -1,0 +1,82 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.alert {
+    margin-bottom: 1.5rem;
+}
+
+.successAlert {
+    margin-bottom: 1.5rem;
+    background-color: #f0fdf4;
+    border-color: #dcfce7;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    display: block;
+}
+
+.checkboxGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.checkboxLabel {
+    font-size: 0.9375rem;
+    color: #374151;
+    margin: 0;
+}
+
+.submitButton {
+    padding: 0.875rem 1rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+
+.submitButton:hover:not(:disabled) {
+    background-color: #1d4ed8;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+    .formRow {
+        grid-template-columns: 1fr;
+    }
+}
