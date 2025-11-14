@@ -3,18 +3,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #f5f7fa 0%, #ffffff 100%);
-  padding: 2rem;
+  background: #F5F5F7; /* background-light from snippet */
 }
 
 .card {
   background: white;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border-radius: 1rem; /* xl from snippet */
   max-width: 500px;
   width: 100%;
   padding: 2.5rem;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem; /* Space below the logo */
+}
+
+.logoIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem; /* h-16 from snippet */
+  width: 4rem; /* w-16 from snippet */
+  border-radius: 0.75rem; /* xl from snippet */
+  background-color: #0055A4; /* primary from snippet */
+  border: 2px solid white; /* White border for the edges */
+}
+
+.logoIconWrapper .material-symbols-outlined {
+  font-size: 3.5rem; /* Increased font-size for larger icon */
+  color: white;
 }
 
 .header {
@@ -25,35 +46,22 @@
 .title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #2C3E50; /* text-primary from snippet */
   margin-bottom: 0.5rem;
 }
 
 .description {
   font-size: 0.9375rem;
-  color: #6b7280;
-}
-
-.alert {
-  margin-bottom: 1.5rem;
-  background-color: #fee2e2;
-  border-color: #fca5a5;
-  color: #991b1b;
+  color: #7F8C8D; /* text-secondary from snippet */
 }
 
 .error {
-  background: #ffebee;
-  color: #c62828;
+  background: #FEE2E2; /* Light red background */
+  color: #E74C3C; /* error from snippet */
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 0.5rem; /* DEFAULT from snippet */
   margin-bottom: 1.5rem;
-  border: 1px solid #ef5350;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  border: 1px solid #E74C3C; /* error from snippet */
 }
 
 .formGroup {
@@ -62,53 +70,172 @@
   gap: 0.5rem;
 }
 
+.passwordInputWrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch; /* Ensure items stretch to fill height */
+}
+
+.passwordInputWrapper .input {
+  flex: 1; /* Allow input to grow */
+  border-top-right-radius: 0; /* Remove right radius for input */
+  border-bottom-right-radius: 0; /* Remove right radius for input */
+  border-right: none; /* Remove right border for input */
+}
+
+.passwordToggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  border: 1px solid #d1d5db;
+  border-top-right-radius: 0.5rem; /* Add radius to button */
+  border-bottom-right-radius: 0.5rem; /* Add radius to button */
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #7F8C8D; /* text-secondary from snippet */
+}
+
+.passwordToggleButton:hover {
+  background-color: #f5f5f7; /* Light hover effect */
+}
+
+.passwordToggleButton .material-symbols-outlined {
+  font-size: 1.5rem; /* Icon size */
+}
+
 .label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #374151;
+  color: #2C3E50; /* text-primary from snippet */
   display: block;
 }
 
 .input {
   padding: 0.75rem 1rem;
   border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem; /* DEFAULT from snippet */
   font-size: 0.9375rem;
   transition: border-color 0.2s;
+  color: #2C3E50; /* text-primary from snippet */
 }
 
 .input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: #0055A4; /* primary from snippet */
+  box-shadow: 0 0 0 3px rgba(0, 85, 164, 0.1); /* primary/20 from snippet */
   outline: none;
 }
 
-.input:disabled {
-  background-color: #f9fafb;
-  color: #9ca3af;
-  cursor: not-allowed;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Increased gap */
 }
 
 .submitButton {
   padding: 0.875rem 1rem;
-  background-color: #2563eb;
+  background-color: #0055A4; /* primary from snippet */
   color: white;
   border: none;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  border-radius: 0.5rem; /* DEFAULT from snippet */
+  font-weight: 700; /* Bold from snippet */
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm from snippet */
+  height: 3.5rem; /* Equivalent to h-14 (56px) */
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  width: 100%; /* Explicitly set to full width */
 }
 
 .submitButton:hover:not(:disabled) {
-  background-color: #1d4ed8;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  background-color: #004482; /* Darker primary for hover */
+  box-shadow: 0 4px 12px rgba(0, 85, 164, 0.3); /* Enhanced shadow */
 }
 
 .submitButton:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+  height: 1.25rem; /* h-5 from snippet */
+  width: 1.25rem; /* w-5 from snippet */
+  color: white; /* text-white from snippet */
+  margin-right: 0.75rem; /* mr-3 from snippet */
+}
+
+.spinnerCircle {
+  opacity: 0.25;
+  stroke: currentColor;
+}
+
+.spinnerPath {
+  opacity: 0.75;
+  fill: currentColor;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.optionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem; /* Adjust margin to align with form groups */
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0; /* Space above and below divider */
+}
+
+.dividerLine {
+  flex: 1;
+  border-top: 1px solid #d1d5db; /* border-gray-300 from snippet */
+}
+
+.dividerText {
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #7F8C8D; /* text-secondary from snippet */
+  flex-shrink: 0; /* Prevent text from shrinking */
+}
+
+.forgotPasswordLink {
+  font-size: 0.875rem;
+  font-weight: 600; /* font-medium from snippet, but bold for emphasis */
+  color: #0055A4; /* primary from snippet */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.forgotPasswordLink:hover {
+  color: #004482; /* Darker primary for hover */
+  text-decoration: underline;
 }
 
 .footer {
@@ -122,18 +249,18 @@
 
 .footerText {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #7F8C8D; /* text-secondary from snippet */
   text-align: center;
 }
 
 .link {
-  color: #2563eb;
+  color: #0055A4; /* primary from snippet */
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700; /* Bold from snippet */
   transition: color 0.2s;
 }
 
 .link:hover {
-  color: #1d4ed8;
+  color: #004482; /* Darker primary for hover */
   text-decoration: underline;
 }

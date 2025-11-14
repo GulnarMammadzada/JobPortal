@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { AuthProvider } from "@/lib/auth-context"
+import { LayoutContent } from "./layout-content" // Import LayoutContent
+import { Toaster } from "@/components/ui/toast" // Import Toaster
 
 const geistSans = Geist({ subsets: ["latin"] })
 const geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -19,8 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+      </head>
       <body className={`${geistSans.className} bg-background text-foreground`}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <LayoutContent>{children}</LayoutContent>
+        </AuthProvider>
+        <Toaster />
       </body>
     </html>
   )

@@ -1,0 +1,432 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f5f7fa; /* background-light */
+  min-height: calc(100vh - 80px); /* Adjust for header/footer if any */
+}
+
+.loading, .error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 1.25rem;
+  color: #757575;
+}
+
+.error {
+  color: #f44336; /* red */
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #757575;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #2196f3; /* primary blue */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 1.5rem;
+}
+
+.detailCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detailItem {
+  font-size: 1rem;
+  color: #333333; /* text-primary */
+  line-height: 1.5;
+}
+
+.detailItem strong {
+  color: #212121;
+  margin-right: 0.5rem;
+}
+
+.matchScore, .statusBadge {
+  padding: 0.375rem 0.875rem;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cvLink {
+  color: #003366;
+  text-decoration: underline;
+}
+
+.cvLink:hover {
+  text-decoration: underline;
+}
+
+.coverLetter, .notes {
+  background: #f5f7fa; /* background-light */
+  border-left: 4px solid #e0e0e0;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+/* Status Change Section */
+.statusChangeSection {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  margin-top: 2rem;
+}
+
+.currentStatusDisplay {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusChangeTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 1.5rem;
+}
+
+.statusGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.statusCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.statusCard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.statusCard .material-symbols-outlined {
+  font-size: 2rem;
+  color: #757575;
+}
+
+.statusCardTitle {
+  font-weight: 600;
+  color: #212121;
+}
+
+.statusCardDescription {
+  font-size: 0.875rem;
+  color: #757575;
+}
+
+.selectedCard {
+  border-color: #003366; /* primary */
+  box-shadow: 0 0 0 2px #003366; /* primary */
+  background-color: #e3f2fd; /* Light primary blue */
+}
+
+.selectedCard .material-symbols-outlined {
+  color: #003366; /* primary */
+}
+
+.selectedCard .statusCardTitle {
+  color: #003366; /* primary */
+}
+
+/* Conditional Fields */
+.conditionalFields {
+  background: #f5f7fa; /* background-light */
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.conditionalFieldsTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 1rem;
+}
+
+.interviewDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formLabelText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 0.5rem;
+}
+
+.formInput, .formTextarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: white;
+  color: #212121;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formInput:focus, .formTextarea:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+  outline: none;
+}
+
+.formTextarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Message Field */
+.messageField {
+  margin-bottom: 2rem;
+}
+
+.messageHint {
+  font-size: 0.875rem;
+  color: #757575;
+  margin-top: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+/* Suggestion Chips */
+.suggestionChips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.suggestionChipsLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #757575;
+  margin-right: 0.5rem;
+}
+
+.suggestionChip {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #e3f2fd; /* Light primary blue */
+  color: #003366; /* primary */
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.suggestionChip:hover {
+  background-color: #bbdefb; /* Darker light primary blue */
+}
+
+/* Email Preview */
+.emailPreview {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.emailPreviewSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  background-color: white;
+  transition: background-color 0.2s;
+}
+
+.emailPreviewSummary:hover {
+  background-color: #f5f7fa;
+}
+
+.emailPreviewTitle {
+  font-weight: 600;
+  color: #212121;
+}
+
+.emailPreviewSummary .material-symbols-outlined {
+  transition: transform 0.3s;
+}
+
+.emailPreviewSummary[open] .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+
+.emailPreviewContent {
+  padding: 1rem;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f5f7fa;
+  font-size: 0.875rem;
+  color: #757575;
+}
+
+.emailPreviewSubject {
+  font-weight: 600;
+  color: #212121;
+}
+
+.emailPreviewBody {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  line-height: 1.5;
+}
+
+/* Footer Buttons */
+.footerButtons {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  margin-left: -2rem; /* Counteract container padding */
+  margin-right: -2rem; /* Counteract container padding */
+  width: calc(100% + 4rem); /* Extend to full width */
+}
+
+.warningMessage {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: #ffebee; /* Light red */
+  color: #d32f2f; /* Red */
+  margin-bottom: 1rem;
+}
+
+.warningMessage .material-symbols-outlined {
+  font-size: 1.25rem;
+  color: #d32f2f;
+}
+
+.warningText {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.cancelButton, .updateButton {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelButton {
+  background-color: #e3f2fd; /* Light primary blue */
+  color: #003366; /* primary */
+  border: 1px solid #e3f2fd;
+}
+
+.cancelButton:hover {
+  background-color: #bbdefb; /* Darker light primary blue */
+}
+
+.updateButton {
+  background-color: #003366; /* primary */
+  color: white;
+  border: 1px solid #003366;
+}
+
+.updateButton:hover {
+  background-color: #002244; /* Darker primary */
+}
+
+/* Disabled styles */
+.disabledGrid {
+  pointer-events: none; /* Disable all interactions */
+  opacity: 0.6; /* Visually indicate disabled state */
+}
+
+.disabledCard {
+  cursor: not-allowed;
+  background-color: #f5f5f5; /* Lighter background for disabled cards */
+  border-color: #e0e0e0;
+}
+
+.disabledCard .material-symbols-outlined,
+.disabledCard .statusCardTitle,
+.disabledCard .statusCardDescription {
+  color: #bdbdbd; /* Lighter text color for disabled cards */
+}
+
+.disabledMessage {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: #fff3e0; /* Light orange */
+  color: #ef6c00; /* Orange */
+  margin-bottom: 1rem;
+}
+
+.disabledMessage .material-symbols-outlined {
+  font-size: 1.25rem;
+  color: #ef6c00;
+}

@@ -24,7 +24,7 @@ export function JobCard({ job, onClick }: JobCardProps) {
 
             <div className={styles.badges}>
                 <Badge variant="secondary">{job.employmentType}</Badge>
-                {job.isRemote && <Badge variant="outline">Remote</Badge>}
+                {job.isRemote && <Badge variant="remote">Remote</Badge>}
                 <Badge>{job.experienceLevel}</Badge>
             </div>
 
@@ -32,7 +32,7 @@ export function JobCard({ job, onClick }: JobCardProps) {
 
             <div className={styles.footer}>
                 <div className={styles.location}>
-                    <span className={styles.icon}>📍</span>
+                    <span className="material-symbols-outlined">location_on</span>
                     {job.city}
                 </div>
                 <div className={styles.salary}>

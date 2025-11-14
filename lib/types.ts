@@ -78,6 +78,25 @@ export interface JobSeekerDto {
     updatedAt: string
 }
 
+export interface UpdateJobSeekerProfileRequest {
+    dateOfBirth?: string
+    gender?: string
+    city?: string
+    address?: string
+    educationLevel?: string
+    education?: string
+    experienceYears?: number
+    experience?: string
+    cvUrl?: string
+    linkedinUrl?: string
+    githubUrl?: string
+    portfolio?: string
+}
+
+export interface UpdateJobSeekerSkillsRequest {
+    skills: string[]
+}
+
 // Vacancy types
 export interface VacancyDto {
     id: number
@@ -113,6 +132,13 @@ export interface CompanyBasicDto {
 }
 
 // Application types
+export interface InterviewDetails {
+    date?: string
+    time?: string
+    location?: string
+    meetingLink?: string
+}
+
 export interface ApplicationDto {
     id: number
     vacancyId: number
@@ -129,7 +155,14 @@ export interface ApplicationDto {
     status: "PENDING" | "REVIEWED" | "SHORTLISTED" | "INTERVIEW_SCHEDULED" | "INTERVIEWED" | "OFFER_SENT" | "ACCEPTED" | "REJECTED"
     reviewedAt?: string
     notes?: string
+    interviewDetails?: InterviewDetails // Added interview details
     createdAt: string
+}
+
+export interface UpdateApplicationStatusRequest {
+    status: "PENDING" | "REVIEWED" | "SHORTLISTED" | "INTERVIEW_SCHEDULED" | "INTERVIEWED" | "OFFER_SENT" | "ACCEPTED" | "REJECTED"
+    notes?: string
+    interviewDetails?: InterviewDetails
 }
 
 export interface ApplicationWithHistoryDto extends ApplicationDto {
@@ -148,7 +181,9 @@ export interface ApplicationStatisticsDto {
     pending: number
     reviewed: number
     shortlisted: number
+    interviewScheduled: number
     interviewed: number
+    offerSent: number
     rejected: number
     accepted: number
 }

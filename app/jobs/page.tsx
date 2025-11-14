@@ -79,10 +79,24 @@ export default function JobsPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Find Your Next Opportunity</h1>
-        <p className={styles.subtitle}>Discover jobs that match your skills and interests</p>
-        <SearchBar onSearch={handleSearch} defaultValue={searchQuery} />
+      {/* Top App Bar */}
+      <div className={styles.topAppBar}>
+        <div className={styles.menuIconWrapper}>
+          <span className="material-symbols-outlined">menu</span>
+        </div>
+        <h1 className={styles.appBarTitle}>Browse Jobs</h1>
+        <div className={styles.notificationIconWrapper}>
+          <button className={styles.notificationButton}>
+            <span className="material-symbols-outlined">notifications</span>
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.searchAndFiltersSection}>
+        {/* Search Bar */}
+        <div className={styles.searchBarWrapper}>
+          <SearchBar onSearch={handleSearch} defaultValue={searchQuery} />
+        </div>
       </div>
 
       <div className={styles.content}>
@@ -99,8 +113,24 @@ export default function JobsPage() {
             </div>
           ) : jobs.length === 0 ? (
             <div className={styles.noResults}>
-              <p>No jobs found matching your criteria.</p>
-              <p>Try adjusting your search or filters.</p>
+              <div className={styles.noResultsIconWrapper}>
+                <span className="material-symbols-outlined">search_off</span>
+              </div>
+              <h3 className={styles.noResultsTitle}>No Jobs Found</h3>
+              <p className={styles.noResultsText}>Try adjusting your filters to find what you're looking for.</p>
+              <button className={styles.clearFiltersButton} onClick={() => handleFilterChange({
+                location: "",
+                salaryMin: 0,
+                salaryMax: 500000,
+                employmentType: "",
+                experienceLevel: "",
+                isRemote: false,
+                category: "",
+                skills: "",
+                postedWithin: "",
+              })}>
+                <span>Clear Filters</span>
+              </button>
             </div>
           ) : (
             <>

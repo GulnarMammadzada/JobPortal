@@ -129,22 +129,23 @@
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem; /* Adjusted font size for consistency */
   font-weight: 700;
-  color: #212121;
-  margin-bottom: 1.5rem;
+  color: #333333; /* text-primary-light from snippet */
+  margin-bottom: 1rem; /* Adjusted margin */
 }
 
 .aboutSection {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
+  background: #FFFFFF; /* background-light from snippet */
+  padding: 1.5rem; /* Adjusted padding for consistency */
+  border-radius: 0.75rem; /* Adjusted border-radius for consistency */
   border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Added subtle shadow */
 }
 
 .description {
-  color: #424242;
-  line-height: 1.8;
+  color: #424242; /* Retained original color for description text */
+  line-height: 1.7; /* Adjusted line height for better readability */
   font-size: 1rem;
 }
 

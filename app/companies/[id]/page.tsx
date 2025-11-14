@@ -24,7 +24,6 @@ export default function CompanyDetailPage() {
   const [reviews, setReviews] = useState<CompanyReviewDto[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState("")
-  const [showReviewForm, setShowReviewForm] = useState(false)
 
   useEffect(() => {
     fetchCompanyData()
@@ -46,18 +45,6 @@ export default function CompanyDetailPage() {
       setError(err instanceof Error ? err.message : "Failed to fetch company details")
     } finally {
       setIsLoading(false)
-    }
-  }
-
-  const handleReviewSubmit = async (reviewData: CreateCompanyReviewRequest) => {
-    try {
-      await api.post("/company-reviews", reviewData)
-      setShowReviewForm(false)
-      // Refresh reviews
-      const reviewsData = await api.get<PageResponse<CompanyReviewDto>>(`/company-reviews/company/${companyId}?page=0&size=50`)
-      setReviews(reviewsData.content || [])
-    } catch (err) {
-      alert("Failed to submit review: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
 
@@ -186,20 +173,7 @@ export default function CompanyDetailPage() {
             <div className={styles.reviewsSection}>
               <div className={styles.reviewsHeader}>
                 <h2 className={styles.sectionTitle}>Employee Reviews</h2>
-                {user?.role === "JOB_SEEKER" && !showReviewForm && (
-                  <Button onClick={() => setShowReviewForm(true)} className={styles.writeReviewBtn}>
-                    Write a Review
-                  </Button>
-                )}
               </div>
-
-              {showReviewForm && (
-                <ReviewForm
-                  companyId={parseInt(companyId)}
-                  onSubmit={handleReviewSubmit}
-                  onCancel={() => setShowReviewForm(false)}
-                />
-              )}
 
               {reviews.length === 0 ? (
                 <div className={styles.emptyState}>
@@ -251,110 +225,5 @@ export default function CompanyDetailPage() {
         </Tabs>
       </div>
     </div>
-  )
-}
-
-function ReviewForm({
-  companyId,
-  onSubmit,
-  onCancel,
-}: {
-  companyId: number
-  onSubmit: (data: CreateCompanyReviewRequest) => Promise<void>
-  onCancel: () => void
-}) {
-  const [formData, setFormData] = useState<CreateCompanyReviewRequest>({
-    companyId,
-    rating: 5,
-    title: "",
-    comment: "",
-    isCurrentEmployee: false,
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (formData.comment.length < 10) {
-      alert("Review must be at least 10 characters long")
-      return
-    }
-    setIsSubmitting(true)
-    try {
-      await onSubmit(formData)
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const renderStars = (rating: number) => {
-    return (
-      <div className={styles.starSelector}>
-        {[1, 2, 3, 4, 5].map((star) => (
-          <span
-            key={star}
-            className={`${styles.starButton} ${star <= rating ? styles.starButtonFilled : ""}`}
-            onClick={() => setFormData({ ...formData, rating: star })}
-          >
-            ★
-          </span>
-        ))}
-      </div>
-    )
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className={styles.reviewForm}>
-      <div className={styles.formGroup}>
-        <label>Rating</label>
-        {renderStars(formData.rating)}
-      </div>
-
-      <div className={styles.formGroup}>
-        <label>Title (Optional)</label>
-        <input
-          type="text"
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          placeholder="Summary of your review"
-          className={styles.input}
-          maxLength={100}
-        />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label>Your Review *</label>
-        <textarea
-          value={formData.comment}
-          onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
-          placeholder="Share your experience working at this company..."
-          className={styles.textarea}
-          rows={6}
-          required
-          minLength={10}
-          maxLength={2000}
-        />
-        <div className={styles.charCount}>{formData.comment.length} / 2000</div>
-      </div>
-
-      <div className={styles.formGroup}>
-        <label className={styles.checkboxLabel}>
-          <input
-            type="checkbox"
-            checked={formData.isCurrentEmployee || false}
-            onChange={(e) => setFormData({ ...formData, isCurrentEmployee: e.target.checked })}
-          />
-          I currently work here
-        </label>
-      </div>
-
-      <div className={styles.formActions}>
-        <Button type="button" variant="outline" onClick={onCancel} disabled={isSubmitting}>
-          Cancel
-        </Button>
-        <Button type="submit" disabled={isSubmitting || formData.comment.length < 10}>
-          {isSubmitting ? "Submitting..." : "Submit Review"}
-        </Button>
-      </div>
-    </form>
   )
 }

@@ -141,187 +141,337 @@ export default function CompanyDashboard() {
         </div>
       </header>
 
-      {/* Statistics Cards */}
-      <section className={styles.statsSection}>
-        <div className={styles.statsGrid}>
-          <div className={styles.statCard}>
-            <div className={styles.statIcon}>💼</div>
-            <div>
-              <div className={styles.statValue}>{stats.totalVacancies}</div>
-              <div className={styles.statLabel}>Total Vacancies</div>
-              <div className={styles.statDetail}>{stats.activeVacancies} active, {stats.pendingVacancies} pending</div>
-            </div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statIcon}>📨</div>
-            <div>
-              <div className={styles.statValue}>{stats.totalApplications}</div>
-              <div className={styles.statLabel}>Total Applications</div>
-              <div className={styles.statDetail}>Across all vacancies</div>
-            </div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statIcon}>🆕</div>
-            <div>
-              <div className={styles.statValue}>{stats.newApplications}</div>
-              <div className={styles.statLabel}>New Applications</div>
-              <div className={styles.statDetail}>Requires review</div>
-            </div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statIcon}>👁️</div>
-            <div>
-              <div className={styles.statValue}>{stats.totalViews}</div>
-              <div className={styles.statLabel}>Total Views</div>
-              <div className={styles.statDetail}>This month</div>
-            </div>
-          </div>
-        </div>
-      </section>
+            <div className={styles.mainContent}>
 
-      <div className={styles.mainContent}>
-        {/* My Vacancies */}
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>My Vacancies</h2>
-            <Link href="/company/vacancies" className={styles.viewAllLink}>View All</Link>
-          </div>
+              {/* Quick Stats Section */}
 
-          {vacancies.length === 0 ? (
-            <div className={styles.emptyState}>
-              <p>You haven't posted any jobs yet</p>
-              <Link href="/company/vacancies/new" className={styles.btnPrimary}>Create First Vacancy</Link>
-            </div>
-          ) : (
-            <div className={styles.vacanciesList}>
-              {vacancies.map((vacancy) => (
-                <div key={vacancy.id} className={styles.vacancyCard}>
-                  <div className={styles.vacHeader}>
-                    <div>
-                      <h3 className={styles.vacTitle}>{vacancy.title}</h3>
-                      <p className={styles.vacDetails}>
-                        {vacancy.city} • {vacancy.employmentType.replace("_", " ")} • Posted {new Date(vacancy.createdAt).toLocaleDateString()}
-                      </p>
+              <div className={styles.quickStatsSection}>
+
+                <h2 className={styles.sectionTitle}>Quick Stats</h2>
+
+                <div className={styles.statsGrid}>
+
+                  {/* Stat Card: Total Vacancies */}
+
+                  <div className={styles.statCard}>
+
+                    <span className="material-symbols-outlined">work</span>
+
+                    <p className={styles.statLabel}>Total Vacancies</p>
+
+                    <div className={styles.statValueContainer}>
+
+                      <p className={styles.statValue}>{stats.totalVacancies}</p>
+
                     </div>
-                    <span
-                      className={styles.statusBadge}
-                      style={{ backgroundColor: getStatusColor(vacancy.status) }}
-                    >
-                      {vacancy.status.replace(/_/g, " ")}
-                    </span>
+
+                    <div className={styles.statDetail}>{stats.activeVacancies} active, {stats.pendingVacancies} pending</div>
+
                   </div>
-                  <div className={styles.vacStats}>
-                    <span>👁️ {vacancy.viewCount} views</span>
-                    <span>📨 {vacancy.applicationCount} applications</span>
+
+                  {/* Stat Card: Total Applications */}
+
+                  <div className={styles.statCard}>
+
+                    <span className="material-symbols-outlined">group</span>
+
+                    <p className={styles.statLabel}>Total Applications</p>
+
+                    <div className={styles.statValueContainer}>
+
+                      <p className={styles.statValue}>{stats.totalApplications}</p>
+
+                    </div>
+
+                    <div className={styles.statDetail}>Across all vacancies</div>
+
                   </div>
-                  <div className={styles.vacActions}>
-                    <Link href={`/jobs/${vacancy.id}`} className={styles.vacLink}>View</Link>
-                    <Link href={`/company/vacancies/${vacancy.id}/applications`} className={styles.vacLink}>
-                      Applications
-                    </Link>
-                    <Link href={`/company/vacancies/${vacancy.id}/edit`} className={styles.vacLink}>Edit</Link>
+
+                  {/* Stat Card: New Applications (Highlighted) */}
+
+                  <div className={`${styles.statCard} ${styles.highlightedStatCard}`}>
+
+                    <span className="material-symbols-outlined">inbox</span>
+
+                    <p className={`${styles.statLabel} ${styles.highlightedStatLabel}`}>New Applications</p>
+
+                    <div className={styles.statValueContainer}>
+
+                      <p className={styles.statValue}>{stats.newApplications}</p>
+
+                    </div>
+
+                    <div className={styles.statDetail}>Requires review</div>
+
                   </div>
+
+                  {/* Stat Card: Total Views */}
+
+                  <div className={styles.statCard}>
+
+                    <span className="material-symbols-outlined">visibility</span>
+
+                    <p className={styles.statLabel}>Total Views</p>
+
+                    <div className={styles.statValueContainer}>
+
+                      <p className={styles.statValue}>{stats.totalViews}</p>
+
+                    </div>
+
+                    <div className={styles.statDetail}>This month</div>
+
+                  </div>
+
                 </div>
-              ))}
-            </div>
-          )}
-        </section>
 
-        {/* Recent Applications */}
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Recent Applications</h2>
-            <Link href="/company/applications" className={styles.viewAllLink}>View All</Link>
-          </div>
+              </div>
 
-          {recentApplications.length === 0 ? (
-            <div className={styles.emptyState}>
-              <p>No applications yet</p>
-            </div>
-          ) : (
-            <div className={styles.applicationsList}>
-              {recentApplications.map((app) => (
-                <div key={app.id} className={styles.applicationCard}>
-                  <div className={styles.appHeader}>
-                    <div>
-                      <h3 className={styles.appName}>{app.fullName}</h3>
-                      <p className={styles.appEmail}>{app.email}</p>
-                      <p className={styles.appDate}>Applied {new Date(app.createdAt).toLocaleDateString()}</p>
-                    </div>
-                    <div
-                      className={styles.matchScore}
-                      style={{ backgroundColor: getMatchColor(app.matchScore) }}
-                    >
-                      {app.matchScore}% Match
-                    </div>
-                  </div>
-                  <div className={styles.appFooter}>
-                    <span
-                      className={styles.statusBadge}
-                      style={{ backgroundColor: getAppStatusColor(app.status) }}
-                    >
-                      {app.status.replace(/_/g, " ")}
-                    </span>
-                    <div className={styles.appActions}>
-                      <a href={app.cvFileUrl} target="_blank" className={styles.appLink}>View CV</a>
-                      <Link href={`/company/applications/${app.id}`} className={styles.appLink}>
-                        Details
-                      </Link>
-                    </div>
-                  </div>
+      
+
+              {/* My Vacancies */}
+
+              <section className={styles.section}>
+
+                <div className={styles.sectionHeader}>
+
+                  <h2 className={styles.sectionTitle}>My Vacancies</h2>
+
+                  <Link href="/company/vacancies" className={styles.viewAllLink}>View All</Link>
+
                 </div>
-              ))}
+
+      
+
+                {vacancies.length === 0 ? (
+
+                  <div className={styles.emptyState}>
+
+                    <p>You haven't posted any jobs yet</p>
+
+                    <Link href="/company/vacancies/new" className={styles.btnPrimary}>Create First Vacancy</Link>
+
+                  </div>
+
+                ) : (
+
+                  <div className={styles.vacanciesList}>
+
+                    {vacancies.map((vacancy) => (
+
+                      <div key={vacancy.id} className={styles.vacancyCard}>
+
+                        <div className={styles.vacHeader}>
+
+                          <div>
+
+                            <h3 className={styles.vacTitle}>{vacancy.title}</h3>
+
+                            <p className={styles.vacDetails}>
+
+                              {vacancy.city} • {vacancy.employmentType.replace("_", " ")} • Posted {new Date(vacancy.createdAt).toLocaleDateString()}
+
+                            </p>
+
+                          </div>
+
+                          <span
+
+                            className={styles.statusBadge}
+
+                            style={{ backgroundColor: getStatusColor(vacancy.status) }}
+
+                          >
+
+                            {vacancy.status.replace(/_/g, " ")}
+
+                          </span>
+
+                        </div>
+
+                        <div className={styles.vacStats}>
+
+                          <span>👁️ {vacancy.viewCount} views</span>
+
+                          <span>📨 {vacancy.applicationCount} applications</span>
+
+                        </div>
+
+                        <div className={styles.vacActions}>
+
+                          <Link href={`/company/vacancies/${vacancy.id}`} className={styles.vacLink}>View</Link>
+
+                                                    <Link href={`/company/applications?vacancyId=${vacancy.id}`} className={styles.vacLink}>
+
+                                                      Applications
+
+                                                    </Link>
+
+                          <Link href={`/company/vacancies/${vacancy.id}/edit`} className={styles.vacLink}>Edit</Link>
+
+                        </div>
+
+                      </div>
+
+                    ))}
+
+                  </div>
+
+                )}
+
+              </section>
+
+      
+
+              {/* Recent Applications */}
+
+              <section className={styles.section}>
+
+                <div className={styles.sectionHeader}>
+
+                  <h2 className={styles.sectionTitle}>Recent Applications</h2>
+
+                  <Link href="/company/applications" className={styles.viewAllLink}>View All</Link>
+
+                </div>
+
+      
+
+                {recentApplications.length === 0 ? (
+
+                  <div className={styles.emptyState}>
+
+                    <p>No applications yet</p>
+
+                  </div>
+
+                ) : (
+
+                  <div className={styles.applicationsList}>
+
+                    {recentApplications.map((app) => (
+
+                      <div key={app.id} className={styles.applicationCard}>
+
+                        <div className={styles.appHeader}>
+
+                          <div>
+
+                            <h3 className={styles.appName}>{app.fullName}</h3>
+
+                            <p className={styles.appEmail}>{app.email}</p>
+
+                            <p className={styles.appDate}>Applied {new Date(app.createdAt).toLocaleDateString()}</p>
+
+                          </div>
+
+                          <div
+
+                            className={styles.matchScore}
+
+                            style={{ backgroundColor: getMatchColor(app.matchScore) }}
+
+                          >
+
+                            {app.matchScore}% Match
+
+                          </div>
+
+                        </div>
+
+                        <div className={styles.appFooter}>
+
+                          <span
+
+                            className={styles.statusBadge}
+
+                            style={{ backgroundColor: getAppStatusColor(app.status) }}
+
+                          >
+
+                            {app.status.replace(/_/g, " ")}
+
+                          </span>
+
+                          <div className={styles.appActions}>
+
+                            <a href={app.cvFileUrl} target="_blank" className={styles.appLink}>View CV</a>
+
+                            <Link href={`/company/applications/${app.id}`} className={styles.appLink}>
+
+                              Details
+
+                            </Link>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    ))}
+
+                  </div>
+
+                )}
+
+              </section>
+
+      
+
+              {/* Quick Actions */}
+
+              <section className={styles.quickActions}>
+
+                <h2 className={styles.sectionTitle}>Quick Actions</h2>
+
+                <div className={styles.actionsGrid}>
+
+                  {/* Action Button: Create New Vacancy */}
+
+                  <Link href="/company/vacancies/new" className={styles.actionButton}>
+
+                    <span className="material-symbols-outlined">add_circle</span>
+
+                    <p className={styles.actionButtonText}>Create New Vacancy</p>
+
+                  </Link>
+
+                  {/* Action Button: View All Applications */}
+
+                  <Link href="/company/applications" className={styles.actionButton}>
+
+                    <span className="material-symbols-outlined">folder</span>
+
+                    <p className={styles.actionButtonText}>View All Applications</p>
+
+                  </Link>
+
+                  {/* Action Button: Generate with AI */}
+
+                  <Link href="/company/ai-generator" className={styles.actionButton}>
+
+                    <span className="material-symbols-outlined">auto_awesome</span>
+
+                    <p className={styles.actionButtonText}>Generate with AI</p>
+
+                  </Link>
+
+                  {/* Action Button: Company Settings */}
+
+                  <Link href="/company/profile" className={styles.actionButton}>
+
+                    <span className="material-symbols-outlined">settings</span>
+
+                    <p className={styles.actionButtonText}>Company Settings</p>
+
+                  </Link>
+
+                </div>
+
+              </section>
+
             </div>
-          )}
-        </section>
-
-        {/* Quick Actions */}
-        <section className={styles.quickActions}>
-          <h2 className={styles.sectionTitle}>Quick Actions</h2>
-          <div className={styles.actionsGrid}>
-            <Link href="/company/vacancies/new" className={styles.actionCard}>
-              <div className={styles.actionIcon}>➕</div>
-              <h3 className={styles.actionTitle}>Create Vacancy</h3>
-              <p className={styles.actionDesc}>Post a new job opening</p>
-            </Link>
-            <Link href="/company/ai-generator" className={styles.actionCard}>
-              <div className={styles.actionIcon}>🤖</div>
-              <h3 className={styles.actionTitle}>AI Job Generator</h3>
-              <p className={styles.actionDesc}>Generate job descriptions</p>
-            </Link>
-            <Link href="/company/applications" className={styles.actionCard}>
-              <div className={styles.actionIcon}>📋</div>
-              <h3 className={styles.actionTitle}>All Applications</h3>
-              <p className={styles.actionDesc}>Manage candidates</p>
-            </Link>
-            <Link href="/company/profile" className={styles.actionCard}>
-              <div className={styles.actionIcon}>🏢</div>
-              <h3 className={styles.actionTitle}>Company Profile</h3>
-              <p className={styles.actionDesc}>Update your info</p>
-            </Link>
-          </div>
-        </section>
-      </div>
-
-      {/* Bottom Navigation */}
-      <nav className={styles.bottomNav}>
-        <Link href="/company/dashboard" className={styles.navItem + " " + styles.navItemActive}>
-          <span className={styles.navIcon}>🏠</span>
-          <span>Dashboard</span>
-        </Link>
-        <Link href="/company/vacancies" className={styles.navItem}>
-          <span className={styles.navIcon}>💼</span>
-          <span>Vacancies</span>
-        </Link>
-        <Link href="/company/applications" className={styles.navItem}>
-          <span className={styles.navIcon}>📨</span>
-          <span>Applications</span>
-        </Link>
-        <Link href="/company/profile" className={styles.navItem}>
-          <span className={styles.navIcon}>🏢</span>
-          <span>Profile</span>
-        </Link>
-      </nav>
     </div>
   )
 }

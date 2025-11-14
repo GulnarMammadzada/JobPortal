@@ -12,7 +12,9 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [password, setPassword] = useState("")
+  const [showPassword, setShowPassword] = useState(false) // New state for password visibility
   const [confirmPassword, setConfirmPassword] = useState("")
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false) // New state for confirm password visibility
   const [role, setRole] = useState<"JOB_SEEKER" | "COMPANY">("JOB_SEEKER")
 
   // Company fields
@@ -87,6 +89,12 @@ export default function RegisterPage() {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
+        {/* Logo */}
+        <div className={styles.logoContainer}>
+          <div className={styles.logoIconWrapper}>
+            <span className="material-symbols-outlined">work</span>
+          </div>
+        </div>
         <div className={styles.header}>
           <h1 className={styles.title}>Create Your Account</h1>
           <p className={styles.description}>
@@ -172,38 +180,62 @@ export default function RegisterPage() {
             <label htmlFor="password" className={styles.label}>
               Password *
             </label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Minimum 8 characters"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={isLoading}
-              required
-              className={styles.input}
-            />
+            <div className={styles.passwordInputWrapper}>
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Minimum 8 characters"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={isLoading}
+                required
+                className={styles.input}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className={styles.passwordToggleButton}
+                aria-label="Toggle password visibility"
+              >
+                <span className="material-symbols-outlined">
+                  {showPassword ? "visibility" : "visibility_off"}
+                </span>
+              </button>
+            </div>
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="confirmPassword" className={styles.label}>
               Confirm Password *
             </label>
-            <input
-              id="confirmPassword"
-              type="password"
-              placeholder="Re-enter password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              disabled={isLoading}
-              required
-              className={styles.input}
-            />
+            <div className={styles.passwordInputWrapper}>
+              <input
+                id="confirmPassword"
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Re-enter password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                disabled={isLoading}
+                required
+                className={styles.input}
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className={styles.passwordToggleButton}
+                aria-label="Toggle confirm password visibility"
+              >
+                <span className="material-symbols-outlined">
+                  {showConfirmPassword ? "visibility" : "visibility_off"}
+                </span>
+              </button>
+            </div>
           </div>
 
           {/* Company-specific Fields */}
           {role === "COMPANY" && (
             <>
-              <div className={styles.divider}>Company Information</div>
+              <div className={styles.divider}><span>Company Information</span></div>
 
               <div className={styles.formGroup}>
                 <label htmlFor="companyName" className={styles.label}>
@@ -324,7 +356,17 @@ export default function RegisterPage() {
             disabled={isLoading}
             className={styles.submitButton}
           >
-            {isLoading ? "Creating account..." : "Create Account"}
+            {isLoading ? (
+              <>
+                <svg className={styles.spinner} fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <circle className={styles.spinnerCircle} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className={styles.spinnerPath} d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+                </svg>
+                Creating account...
+              </>
+            ) : (
+              "Create Account"
+            )}
           </button>
         </form>
 

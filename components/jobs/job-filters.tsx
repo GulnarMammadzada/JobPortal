@@ -103,9 +103,12 @@ export function JobFilters({ filters, onFilterChange }: JobFiltersProps) {
     return (
         <div className={styles.filters}>
             <h3 className={styles.title}>Filters</h3>
+            <Button onClick={handleReset} variant="outline" className={styles.resetButton}>
+                Clear All Filters
+            </Button>
 
             <Card className={styles.filterSection}>
-                <h4 className={styles.sectionTitle}>🔍 Keyword Search</h4>
+                <h4 className={styles.sectionTitle}><span className="material-symbols-outlined">search</span> Keyword Search</h4>
                 <input
                     type="text"
                     placeholder="Search skills..."
@@ -117,7 +120,7 @@ export function JobFilters({ filters, onFilterChange }: JobFiltersProps) {
             </Card>
 
             <Card className={styles.filterSection}>
-                <h4 className={styles.sectionTitle}>📂 Category</h4>
+                <h4 className={styles.sectionTitle}><span className="material-symbols-outlined">category</span> Category</h4>
                 <select
                     value={localFilters.category || ""}
                     onChange={handleCategoryChange}
@@ -131,7 +134,7 @@ export function JobFilters({ filters, onFilterChange }: JobFiltersProps) {
             </Card>
 
             <Card className={styles.filterSection}>
-                <h4 className={styles.sectionTitle}>📍 Location</h4>
+                <h4 className={styles.sectionTitle}><span className="material-symbols-outlined">location_on</span> Location</h4>
                 <input
                     type="text"
                     placeholder="Enter city..."
@@ -142,7 +145,7 @@ export function JobFilters({ filters, onFilterChange }: JobFiltersProps) {
             </Card>
 
             <Card className={styles.filterSection}>
-                <h4 className={styles.sectionTitle}>📅 Posted Date</h4>
+                <h4 className={styles.sectionTitle}><span className="material-symbols-outlined">calendar_today</span> Posted Date</h4>
                 <select
                     value={localFilters.postedWithin || ""}
                     onChange={handlePostedWithinChange}
@@ -155,7 +158,7 @@ export function JobFilters({ filters, onFilterChange }: JobFiltersProps) {
             </Card>
 
             <Card className={styles.filterSection}>
-                <h4 className={styles.sectionTitle}>Salary Range</h4>
+                <h4 className={styles.sectionTitle}><span className="material-symbols-outlined">payments</span> Salary Range</h4>
                 <div className={styles.salaryDisplay}>
                     <span>${localFilters.salaryMin.toLocaleString()}</span>
                     <span>-</span>
@@ -172,7 +175,7 @@ export function JobFilters({ filters, onFilterChange }: JobFiltersProps) {
             </Card>
 
             <Card className={styles.filterSection}>
-                <h4 className={styles.sectionTitle}>Employment Type</h4>
+                <h4 className={styles.sectionTitle}><span className="material-symbols-outlined">work</span> Employment Type</h4>
                 <div className={styles.checkboxGroup}>
                     {["FULL_TIME", "PART_TIME", "CONTRACT", "INTERNSHIP"].map((type) => (
                         <div key={type} className={styles.checkboxItem}>
@@ -190,7 +193,7 @@ export function JobFilters({ filters, onFilterChange }: JobFiltersProps) {
             </Card>
 
             <Card className={styles.filterSection}>
-                <h4 className={styles.sectionTitle}>Experience Level</h4>
+                <h4 className={styles.sectionTitle}><span className="material-symbols-outlined">trending_up</span> Experience Level</h4>
                 <div className={styles.checkboxGroup}>
                     {["JUNIOR", "MID", "SENIOR", "LEAD"].map((level) => (
                         <div key={level} className={styles.checkboxItem}>
@@ -216,9 +219,10 @@ export function JobFilters({ filters, onFilterChange }: JobFiltersProps) {
                 </div>
             </Card>
 
-            <Button onClick={handleReset} variant="outline" className={styles.resetButton}>
+            {/* Removed the old reset button as a new one is added at the top */}
+            {/* <Button onClick={handleReset} variant="outline" className={styles.resetButton}>
                 Reset Filters
-            </Button>
+            </Button> */}
         </div>
     )
 }

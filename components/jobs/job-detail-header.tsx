@@ -20,17 +20,17 @@ export function JobDetailHeader({ job }: JobDetailHeaderProps) {
                 <p className={styles.company}>{job.company.companyName}</p>
 
                 <div className={styles.badges}>
-                    <Badge>{job.employmentType}</Badge>
+                    <Badge variant="default">{job.employmentType}</Badge>
                     <Badge variant="secondary">{job.experienceLevel}</Badge>
-                    {job.isRemote && <Badge variant="outline">Remote</Badge>}
+                    {job.isRemote && <Badge variant="remote">Remote</Badge>}
                 </div>
 
                 <div className={styles.info}>
-                    <span className={styles.infoItem}>📍 {job.city}</span>
+                    <span className={styles.infoItem}><span className="material-symbols-outlined">location_on</span> {job.city}</span>
                     <span className={styles.infoItem}>
-            💰 {job.salaryMin && job.salaryMax ? `$${job.salaryMin.toLocaleString()} - $${job.salaryMax.toLocaleString()}` : 'Salary not specified'}
-          </span>
-                    <span className={styles.infoItem}>👁️ {job.viewCount} views</span>
+                        <span className="material-symbols-outlined">payments</span> {job.salaryMin && job.salaryMax ? `$${job.salaryMin.toLocaleString()} - $${job.salaryMax.toLocaleString()}` : 'Salary not specified'}
+                    </span>
+                    <span className={styles.infoItem}><span className="material-symbols-outlined">visibility</span> {job.viewCount} views</span>
                 </div>
             </div>
         </div>

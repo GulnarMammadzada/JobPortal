@@ -25,6 +25,7 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                 <ul className={styles.list}>
                     {parseList(job.requirements).map((req, idx) => (
                         <li key={idx} className={styles.listItem}>
+                            <span className="material-symbols-outlined">check_circle</span>
                             {req}
                         </li>
                     ))}
@@ -36,6 +37,7 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                 <ul className={styles.list}>
                     {parseList(job.responsibilities).map((resp, idx) => (
                         <li key={idx} className={styles.listItem}>
+                            <span className="material-symbols-outlined">arrow_right</span>
                             {resp}
                         </li>
                     ))}

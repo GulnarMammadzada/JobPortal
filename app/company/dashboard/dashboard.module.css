@@ -89,22 +89,40 @@
   padding: 2rem;
 }
 
+.quickStatsSection {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem; /* Consistent padding with .section */
+  margin-top: 2rem; /* Separation from header */
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+}
+
+.quickStatsSection .sectionTitle {
+  padding-bottom: 1rem; /* pb-4 */
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700; /* font-bold */
+  line-height: 1.25; /* leading-tight */
+  letter-spacing: -0.015em; /* tracking-[-0.015em] */
+}
+
 .statsGrid {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  gap: 1rem; /* gap-4 */
+  padding: 0 1rem 1.5rem 1rem; /* px-4 pb-6 */
 }
 
 .statCard {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
+  background: #ffffff; /* bg-background-light */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid #dbe1e6; /* border-border-light */
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem; /* gap-2 */
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -113,26 +131,54 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.statIcon {
-  font-size: 2.5rem;
-}
-
-.statValue {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #212121;
+.statCard .material-symbols-outlined {
+  color: #003366; /* text-primary */
+  font-size: 1.5rem; /* text-2xl */
 }
 
 .statLabel {
-  color: #757575;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  color: #888888; /* text-text-secondary */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  line-height: 1.5; /* leading-normal */
+}
+
+.statValueContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem; /* gap-2 */
+}
+
+.statValue {
+  color: #333333; /* text-text-primary */
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  line-height: 1.25; /* leading-tight */
+  letter-spacing: -0.015em; /* tracking-light */
 }
 
 .statDetail {
-  color: #9e9e9e;
-  font-size: 0.75rem;
+  color: #9e9e9e; /* text-gray-400 */
+  font-size: 0.75rem; /* text-xs */
   margin-top: 0.25rem;
+}
+
+.highlightedStatCard {
+  background: rgba(255, 215, 0, 0.2); /* bg-accent/20 */
+  border-color: #ffd700; /* border-accent */
+}
+
+.highlightedStatCard .material-symbols-outlined {
+  color: #d97706; /* text-yellow-600 */
+}
+
+.highlightedStatLabel {
+  color: #b45309; /* text-yellow-800 */
+}
+
+.spacer {
+  height: 12px;
+  background: #f5f7fa;
 }
 
 .mainContent {
@@ -291,48 +337,59 @@
 .quickActions {
   background: white;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 2rem; /* Consistent padding with other sections */
+  margin-bottom: 2rem;
   border: 1px solid #e0e0e0;
+}
+
+.quickActions .sectionTitle {
+  padding-bottom: 1rem; /* pb-4 */
+  color: #003366; /* primary blue */
 }
 
 .actionsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjusted minmax for larger fit */
+  gap: 1rem; /* gap-4 */
 }
 
-.actionCard {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 1.5rem;
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* gap-2 */
+  padding: 1.25rem; /* Increased padding from 1rem to 1.25rem */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid #e0e0e0; /* border-light, slightly darker for more definition */
+  background: #ffffff; /* bg-background-light */
   text-align: center;
   text-decoration: none;
   color: inherit;
-  transition: all 0.2s;
+  transition: all 0.2s ease-in-out; /* Smooth transitions */
 }
 
-.actionCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #2196f3;
+.actionButton:hover {
+  transform: translateY(-3px); /* Slightly more pronounced lift */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+  border-color: #2196f3; /* primary color */
+  background-color: #e3f2fd; /* Light primary blue on hover */
 }
 
-.actionIcon {
-  font-size: 2.5rem;
-  margin-bottom: 0.75rem;
+.actionButton .material-symbols-outlined {
+  color: #2196f3; /* More vibrant primary blue for icons */
+  font-size: 2.25rem; /* Increased icon size from 1.875rem to 2.25rem */
+  transition: color 0.2s ease-in-out;
 }
 
-.actionTitle {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #212121;
-  margin-bottom: 0.5rem;
+.actionButton:hover .material-symbols-outlined {
+  color: #1976d2; /* Darker primary blue on hover */
 }
 
-.actionDesc {
-  color: #757575;
-  font-size: 0.875rem;
+.actionButtonText {
+  font-weight: 600; /* font-semibold */
+  font-size: 0.9375rem; /* Increased text size from 0.875rem to 0.9375rem */
+  color: #333333; /* text-text-primary */
 }
 
 .bottomNav {

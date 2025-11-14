@@ -43,7 +43,7 @@ export default function LandingPage() {
       <nav className={styles.nav}>
         <div className={styles.navContent}>
           <Link href="/" className={styles.logo}>
-            JobPortal
+            <span className="material-symbols-outlined">work</span> JobPortal
           </Link>
           <div className={styles.navLinks}>
             <Link href="/jobs" className={styles.navLink}>Browse Jobs</Link>
@@ -56,6 +56,7 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className={styles.hero}>
+        <div className={styles.heroBackground}></div> {/* Background image div */}
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Find Your Dream Job with AI</h1>
           <p className={styles.heroSubtitle}>
@@ -99,28 +100,28 @@ export default function LandingPage() {
         <h2 className={styles.sectionTitle}>Why Choose Us</h2>
         <div className={styles.featuresGrid}>
           <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🤖</div>
+            <div className={styles.featureIcon}><span className="material-symbols-outlined">auto_awesome</span></div>
             <h3 className={styles.featureTitle}>AI-Powered Matching</h3>
             <p className={styles.featureDesc}>
               Smart algorithms match you with the best opportunities based on your skills and experience
             </p>
           </div>
           <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>📊</div>
+            <div className={styles.featureIcon}><span className="material-symbols-outlined">analytics</span></div>
             <h3 className={styles.featureTitle}>CV Analysis</h3>
             <p className={styles.featureDesc}>
               Get professional AI feedback on your resume to improve your chances of getting hired
             </p>
           </div>
           <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>💬</div>
+            <div className={styles.featureIcon}><span className="material-symbols-outlined">chat</span></div>
             <h3 className={styles.featureTitle}>Chatbot Assistant</h3>
             <p className={styles.featureDesc}>
               24/7 AI assistant to help you with your job search and answer your questions
             </p>
           </div>
           <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>⭐</div>
+            <div className={styles.featureIcon}><span className="material-symbols-outlined">reviews</span></div>
             <h3 className={styles.featureTitle}>Company Reviews</h3>
             <p className={styles.featureDesc}>
               Read authentic reviews from employees to make informed career decisions
@@ -164,6 +165,28 @@ export default function LandingPage() {
           </div>
         </section>
       )}
+
+      {/* Statistics Section */}
+      <section className={styles.statistics}>
+        <div className={styles.statsGrid}>
+          <div className={styles.statItem}>
+            <p className={styles.statNumber}>25,000+</p>
+            <p className={styles.statLabel}>Active Jobs</p>
+          </div>
+          <div className={styles.statItem}>
+            <p className={styles.statNumber}>8,000+</p>
+            <p className={styles.statLabel}>Companies</p>
+          </div>
+          <div className={styles.statItem}>
+            <p className={styles.statNumber}>1.2M+</p>
+            <p className={styles.statLabel}>Job Seekers</p>
+          </div>
+          <div className={styles.statItem}>
+            <p className={styles.statNumber}>92%</p>
+            <p className={styles.statLabel}>Success Rate</p>
+          </div>
+        </div>
+      </section>
 
       {/* How It Works */}
       <section className={styles.howItWorks}>
@@ -215,6 +238,14 @@ export default function LandingPage() {
             <h4 className={styles.footerTitle}>Company</h4>
             <Link href="/about" className={styles.footerLink}>About Us</Link>
             <Link href="/contact" className={styles.footerLink}>Contact</Link>
+          </div>
+          <div className={styles.footerSection}>
+            <h4 className={styles.footerTitle}>Follow Us</h4>
+            <div className={styles.socialLinks}>
+              <a href="#" className={styles.socialLink} aria-label="Facebook"><span className="material-symbols-outlined">facebook</span></a>
+              <a href="#" className={styles.socialLink} aria-label="LinkedIn"><span className="material-symbols-outlined">linkedin</span></a>
+              <a href="#" className={styles.socialLink} aria-label="Twitter"><span className="material-symbols-outlined">X</span></a> {/* Using X for Twitter */}
+            </div>
           </div>
         </div>
         <div className={styles.footerBottom}>

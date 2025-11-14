@@ -4,31 +4,37 @@
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500; /* Changed to medium */
   white-space: nowrap;
+  border: 1px solid transparent; /* Added for consistency */
 }
 
 .default {
-  background-color: #2196f3;
-  color: white;
+  background-color: #e2e8f0; /* bg-slate-100 from snippet */
+  color: #4a5568; /* text-slate-600 from snippet */
 }
 
 .secondary {
-  background-color: #9e9e9e;
-  color: white;
+  background-color: #e2e8f0; /* bg-slate-100 from snippet */
+  color: #4a5568; /* text-slate-600 from snippet */
 }
 
 .success {
-  background-color: #4caf50;
-  color: white;
+  background-color: #dcfce7; /* bg-green-100 */
+  color: #16a34a; /* text-green-700 */
 }
 
 .warning {
-  background-color: #ff9800;
-  color: white;
+  background-color: #fffbeb; /* bg-amber-100 */
+  color: #b45309; /* text-amber-700 */
 }
 
 .danger {
-  background-color: #f44336;
-  color: white;
+  background-color: #fee2e2; /* bg-red-100 */
+  color: #dc2626; /* text-red-700 */
+}
+
+.remote { /* New variant for remote jobs */
+  background-color: #fffbeb; /* bg-amber-100 from snippet */
+  color: #b45309; /* text-amber-700 from snippet */
 }

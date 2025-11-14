@@ -48,9 +48,9 @@ const PaginationLink = ({
 }: PaginationLinkProps) => (
   <Button
     aria-current={isActive ? "page" : undefined}
-    variant={isActive ? "outline" : "ghost"}
+    variant={isActive ? "default" : "outline"} /* Changed to default/outline */
     size={size}
-    className={className}
+    className={cn("h-10 w-10 rounded-lg", className)} /* Added size and rounded-lg */
     {...props}
   />
 )
@@ -62,12 +62,12 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to previous page"
-    size="default"
-    className={cn("gap-1 pl-2.5", className)}
+    size="icon" /* Changed size to icon */
+    className={cn("gap-1", className)} /* Removed pl-2.5 */
     {...props}
   >
-    <ChevronLeft className="h-4 w-4" />
-    <span>Previous</span>
+    <span className="material-symbols-outlined">chevron_left</span>
+    <span className="sr-only">Previous</span>
   </PaginationLink>
 )
 PaginationPrevious.displayName = "PaginationPrevious"
@@ -78,12 +78,12 @@ const PaginationNext = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to next page"
-    size="default"
-    className={cn("gap-1 pr-2.5", className)}
+    size="icon" /* Changed size to icon */
+    className={cn("gap-1", className)} /* Removed pr-2.5 */
     {...props}
   >
-    <span>Next</span>
-    <ChevronRight className="h-4 w-4" />
+    <span className="sr-only">Next</span>
+    <span className="material-symbols-outlined">chevron_right</span>
   </PaginationLink>
 )
 PaginationNext.displayName = "PaginationNext"
@@ -97,7 +97,7 @@ const PaginationEllipsis = ({
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
   >
-    <MoreHorizontal className="h-4 w-4" />
+    <span className="material-symbols-outlined">more_horiz</span>
     <span className="sr-only">More pages</span>
   </span>
 )

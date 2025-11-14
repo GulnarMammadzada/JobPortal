@@ -1,45 +1,140 @@
 .container {
-  max-width: 1200px;
+  max-width: 100%; /* Full width for container */
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0;
+  background-color: #F0F0F0; /* background-light from snippet */
+  min-height: 100vh; /* Ensure it takes full viewport height */
+  display: flex;
+  flex-direction: column;
 }
 
-.backButton {
-  display: inline-flex;
+/* Top App Bar */
+.topAppBar {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  color: #374151;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s;
-  margin-bottom: 2rem;
+  background-color: #FFFFFF; /* card-light from snippet */
+  padding: 1rem;
+  justify-content: flex-start;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #F0F0F0; /* border-background-light from snippet */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.backButton:hover {
-  background-color: #f9fafb;
-  border-color: #d1d5db;
+.backArrowWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem; /* size-12 from snippet */
+  height: 3rem; /* size-12 from snippet */
+  color: #333333; /* text-light from snippet */
+  cursor: pointer;
+  margin-left: -0.75rem; /* -ml-3 from snippet */
+}
+
+.backArrowWrapper .material-symbols-outlined {
+  font-size: 1.5rem; /* text-2xl from snippet */
+}
+
+.appBarTitle {
+  color: #333333; /* text-light from snippet */
+  font-size: 0.875rem; /* text-sm from snippet */
+  font-weight: 500; /* font-medium from snippet */
+  line-height: 1.25rem; /* leading-tight from snippet */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1; /* Allow title to take available space */
+}
+
+.mainContentWrapper {
+  flex-grow: 1;
+  padding-bottom: 7rem; /* Increased space for sticky action bar and similar jobs */
 }
 
 .mainContent {
   display: grid;
   grid-template-columns: 1fr 360px;
-  gap: 2rem;
+  gap: 1rem; /* Adjusted gap */
+  padding: 1rem; /* Added padding to main content */
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto; /* Center content */
 }
 
 .leftColumn {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem; /* Adjusted gap */
 }
 
 .rightColumn {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem; /* Adjusted gap */
+}
+
+/* Sticky Action Bar */
+.stickyActionBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFFFFF; /* card-light from snippet */
+  padding: 1rem;
+  border-top: 1px solid #F0F0F0; /* border-background-light from snippet */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 20;
+}
+
+.actionBarContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* gap-3 from snippet */
+  max-width: 1200px; /* Match main content width */
+  margin: 0 auto; /* Center content */
+}
+
+.actionBarApplyButton {
+  flex-grow: 1; /* flex-grow from snippet */
+  height: 2.5rem; /* Adjusted height to h-10 (40px) */
+  border-radius: 0.5rem; /* rounded-lg from snippet */
+  background-color: #0066CC; /* primary from snippet */
+  color: white;
+  font-weight: 700; /* font-bold from snippet */
+  font-size: 0.875rem; /* Adjusted font size to text-sm (14px) */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.actionBarApplyButton:hover {
+  background-color: #0055B3; /* Darker primary for hover */
+}
+
+.actionBarSaveButton,
+.actionBarShareButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem; /* size-12 from snippet */
+  height: 3rem; /* size-12 from snippet */
+  border-radius: 0.5rem; /* rounded-lg from snippet */
+  background-color: rgba(102, 153, 204, 0.2); /* secondary/20 from snippet */
+  color: #6699CC; /* secondary from snippet */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.actionBarSaveButton:hover,
+.actionBarShareButton:hover {
+  background-color: rgba(102, 153, 204, 0.3); /* Darker secondary/20 on hover */
+}
+
+.actionBarSaveButton .material-symbols-outlined,
+.actionBarShareButton .material-symbols-outlined {
+  font-size: 1.5rem; /* text-2xl from snippet */
 }
 
 .loadingContainer {
@@ -67,7 +162,7 @@
 }
 
 .actionCard {
-  background: white;
+  background: #FFFFFF; /* card-light from snippet */
   border: 1px solid #e5e7eb;
   border-radius: 0.75rem;
   padding: 1.5rem;
@@ -80,7 +175,7 @@
 .applyButton {
   width: 100%;
   padding: 0.875rem;
-  background-color: #2563eb;
+  background-color: #0066CC; /* primary from snippet */
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -90,8 +185,8 @@
 }
 
 .applyButton:hover {
-  background-color: #1d4ed8;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  background-color: #0055B3; /* Darker primary for hover */
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
 .saveButton {
@@ -99,7 +194,7 @@
   background: white;
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
-  color: #374151;
+  color: #333333; /* text-light from snippet */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -111,14 +206,14 @@
 }
 
 .saveButton.saved {
-  background-color: #f0fdf4;
-  border-color: #dcfce7;
-  color: #15803d;
+  background-color: #e6ffe6; /* Light green for saved */
+  border-color: #66cc66; /* Green border for saved */
+  color: #008000; /* Green text for saved */
 }
 
 .infoCard,
 .companyCard {
-  background: white;
+  background: #FFFFFF; /* card-light from snippet */
   border: 1px solid #e5e7eb;
   border-radius: 0.75rem;
   padding: 1.5rem;
@@ -126,9 +221,9 @@
 }
 
 .cardTitle {
-  font-size: 1rem;
+  font-size: 1.125rem; /* text-lg from snippet */
   font-weight: 700;
-  color: #1f2937;
+  color: #333333; /* text-light from snippet */
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #e5e7eb;
@@ -154,52 +249,77 @@
 
 .infoLabel {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #888888; /* text-secondary-light from snippet */
   font-weight: 500;
 }
 
 .infoValue {
   font-size: 0.9375rem;
-  color: #1f2937;
+  color: #333333; /* text-light from snippet */
   font-weight: 600;
 }
 
 .companyInfo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: center; /* Align items to center */
+  text-align: left; /* Align text to left */
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .companyLogo {
-  width: 80px;
-  height: 80px;
-  border-radius: 0.5rem;
+  width: 3.5rem; /* size-14 from snippet */
+  height: 3.5rem; /* size-14 from snippet */
+  border-radius: 0.5rem; /* rounded-lg from snippet */
   object-fit: cover;
   background-color: #f3f4f6;
+  flex-shrink: 0;
 }
 
 .companyName {
-  font-size: 1rem;
+  font-size: 1.125rem; /* text-lg from snippet */
   font-weight: 700;
-  color: #1f2937;
+  color: #333333; /* text-light from snippet */
+  margin-bottom: 0.25rem;
 }
 
 .companyIndustry {
-  font-size: 0.875rem;
-  color: #6b7280;
+  font-size: 0.875rem; /* text-sm from snippet */
+  color: #888888; /* text-secondary-light from snippet */
+  margin-bottom: 0.25rem;
 }
 
 .companyLocation {
-  font-size: 0.875rem;
-  color: #6b7280;
-  margin-bottom: 0.5rem;
+  font-size: 0.875rem; /* text-sm from snippet */
+  color: #888888; /* text-secondary-light from snippet */
+  margin-bottom: 0;
 }
 
-.verifiedBadge {
-  background-color: #dbeafe;
-  color: #1e40af;
+.companyDescription {
+  font-size: 1rem; /* text-base from snippet */
+  line-height: 1.6; /* leading-relaxed from snippet */
+  color: #888888; /* text-secondary-light from snippet */
+  padding-top: 1rem; /* pt-4 from snippet */
+  border-top: 1px solid #f0f0f0; /* Subtle border */
+  margin-top: 1rem;
+}
+
+.viewCompanyProfileButton {
+  margin-top: 1rem; /* mt-4 from snippet */
+  width: 100%;
+  height: 3rem; /* h-12 from snippet */
+  border-radius: 0.5rem; /* rounded-lg from snippet */
+  background-color: rgba(0, 102, 204, 0.2); /* primary/20 from snippet */
+  color: #0066CC; /* primary from snippet */
+  font-weight: 700; /* font-bold from snippet */
+  font-size: 1rem; /* text-base from snippet */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.viewCompanyProfileButton:hover {
+  background-color: rgba(0, 102, 204, 0.3); /* Darker primary/20 on hover */
 }
 
  @media (max-width: 768px) {
